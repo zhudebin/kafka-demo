@@ -55,12 +55,6 @@ public class FairElectionCallback {
             // 先在父目录下创建临时节点，
             electionInfo.setPath(zk.create(parentPath + "/elect", ("{version=1, id=" + id + "}").getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL));
-            zk.exists(parentPath, new Watcher() {
-                @Override
-                public void process(WatchedEvent event) {
-                    System.out.println("监听父目录：" + event);
-                }
-            });
             List<String> paths = zk.getChildren(parentPath, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
