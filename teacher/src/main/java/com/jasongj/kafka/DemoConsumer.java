@@ -15,15 +15,10 @@ import kafka.message.MessageAndMetadata;
 public class DemoConsumer {
 
 	public static void main(String[] args) {
-		//args = new String[] { "zookeeper0:2181/kafka", "topic1", "group1", "consumer1" };
-		if (args == null || args.length != 4) {
-			System.err.println("Usage:\n\tjava -jar kafka_consumer.jar ${zookeeper_list} ${topic_name} ${group_name} ${consumer_id}");
-			System.exit(1);
-		}
-		String zk = args[0];
-		String topic = args[1];
-		String groupid = args[2];
-		String consumerid = args[3];
+		String zk = "n150:2181";
+		String topic = "topic0";
+		String groupid = "group1";
+		String consumerid = "consumer1";
 		Properties props = new Properties();
 		props.put("zookeeper.connect", zk);
 		props.put("group.id", groupid);
@@ -32,6 +27,11 @@ public class DemoConsumer {
 		props.put("auto.offset.reset", "smallest");
 		props.put("auto.commit.enable", "true");
 		props.put("auto.commit.interval.ms", "100");
+
+        // 将offset 存储到kafka
+//        props.put("offsets.storage", "kafka");
+        // 将offset 写入kafka和zk 两份
+//        props.put("dual.commit", "true");
 
 		ConsumerConfig consumerConfig = new ConsumerConfig(props);
 		ConsumerConnector consumerConnector = Consumer.createJavaConsumerConnector(consumerConfig);

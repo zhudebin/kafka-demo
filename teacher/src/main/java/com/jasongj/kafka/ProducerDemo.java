@@ -9,13 +9,15 @@ import kafka.serializer.StringEncoder;
 
 public class ProducerDemo {
 
-  static private final String TOPIC = "test1";
-  static private final String BROKER_LIST = "192.168.0.150:9094";
+  static private final String TOPIC = "topic0";
+  static private final String BROKER_LIST = "n150:9092";
 
 
   public static void main(String[] args) throws Exception {
     Producer<String, String> producer = initProducer();
-    sendOne(producer, TOPIC);
+    while (1==1) {
+      sendOne(producer, TOPIC);
+    }
   }
 
   private static Producer<String, String> initProducer() {
@@ -37,25 +39,15 @@ public class ProducerDemo {
 
   public static void sendOne(Producer<String, String> producer, String topic) throws InterruptedException {
 	boolean sleepFlag = false;
-    KeyedMessage<String, String> message1 = new KeyedMessage<String, String>(topic, "6", "test 0");
+    KeyedMessage<String, String> message1 = new KeyedMessage<String, String>(topic, "1", "test 0");
     producer.send(message1);
     if(sleepFlag) Thread.sleep(5000);
-    KeyedMessage<String, String> message2 = new KeyedMessage<String, String>(topic, "7", "test 1");
+    KeyedMessage<String, String> message2 = new KeyedMessage<String, String>(topic, "2", "test 1");
     producer.send(message2);
     if(sleepFlag) Thread.sleep(5000);
-    KeyedMessage<String, String> message3 = new KeyedMessage<String, String>(topic, "8", "test 2");
+    KeyedMessage<String, String> message3 = new KeyedMessage<String, String>(topic, "3", "test 2");
     producer.send(message3);
-    if(sleepFlag) Thread.sleep(5000);
-    KeyedMessage<String, String> message4 = new KeyedMessage<String, String>(topic, "9", "test 3");
-    producer.send(message4);
-    if(sleepFlag) Thread.sleep(5000);
-    KeyedMessage<String, String> message5 = new KeyedMessage<String, String>(topic, "10", "test 4");
-    producer.send(message5);
-    if(sleepFlag) Thread.sleep(5000);
-    KeyedMessage<String, String> message6 = new KeyedMessage<String, String>(topic, "11", "test 4");
-    producer.send(message6);
-    if(sleepFlag) Thread.sleep(5000);
-    producer.close();
+//    producer.close();
   }
 
 }

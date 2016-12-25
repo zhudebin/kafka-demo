@@ -17,7 +17,7 @@ public class PartitionerTestProductor {
 
     private static Producer<String, String> producer;
 
-    private static String brokerList = "192.168.0.150:9092";
+    private static String brokerList = "192.168.0.65:9093";
 
     static {
 
@@ -25,7 +25,7 @@ public class PartitionerTestProductor {
 
         props.put("metadata.broker.list", brokerList);
         props.put("serializer.class", StringEncoder.class.getName());
-        props.put("partitioner.class", "com.zmyuan.demo.kafka.partitioner.RandomPartitioner");
+//        props.put("partitioner.class", "com.zmyuan.demo.kafka.partitioner.RandomPartitioner");
         props.put("request.required.acks", "1");
 
         ProducerConfig config = new ProducerConfig(props);
@@ -51,7 +51,7 @@ public class PartitionerTestProductor {
 
     public static void main(String[] args) {
 
-        sendOne("test1");
+        sendOne("topic1");
 
     }
 
