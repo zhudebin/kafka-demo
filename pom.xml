@@ -13,6 +13,7 @@
         <module>kafka-0810</module>
         <module>kafka-082</module>
         <module>socket</module>
+        <module>kafka-010</module>
     </modules>
 
 

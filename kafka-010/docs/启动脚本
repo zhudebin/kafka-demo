@@ -1,0 +1,7 @@
+bin/kafka-topics.sh --zookeeper zookeeper0:2181 --topic orders --create --partitions 3 --replication-factor 1
+bin/kafka-topics.sh --zookeeper zookeeper0:2181 --topic users --create --partitions 3 --replication-factor 1
+bin/kafka-topics.sh --zookeeper zookeeper0:2181 --topic items --create --partitions 6 --replication-factor 1
+bin/kafka-topics.sh --zookeeper zookeeper0:2181 --topic item_counts --create --partitions 3 --replication-factor 1
+bin/kafka-topics.sh --zookeeper zookeeper0:2181 --topic type_top10 --create --partitions 3 --replication-factor 1
+bin/kafka-topics.sh --zookeeper zookeeper0:2181 --topic orderuser-repartition-by-item --create --partitions 6 --replication-factor 1
+bin/kafka-topics.sh --zookeeper zookeeper0:2181 –list
